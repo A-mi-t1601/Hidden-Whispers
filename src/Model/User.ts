@@ -27,14 +27,14 @@ export interface User extends Document {
   message: Message[];
 }
 
-// const UserSchema: Schema<User> = new Schema({
-//   username: {
-//     type: String,
-//     required: [true, "Username is Required"],
-//   },
-//   createdAt: {
-//     type: Date,
-//     required: true,
-//     default: Date.now,
-//   },
-// });
+const UserSchema: Schema<User> = new Schema({
+  username: {
+    type: String,
+    required: [true, "Username is Required"],
+  },
+  // createdAt: {
+  //   type: Date,
+  //   required: true,
+  //   default: Date.now,
+  // },
+});
