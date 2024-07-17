@@ -11,6 +11,7 @@
   "dependencies": {
     "@eslint/config-array": "^0.17.0",
     "@eslint/object-schema": "^2.1.4",
+    "@react-email/components": "^0.0.21",
     "glob": "^11.0.0",
     "inflight": "^1.0.6",
     "lru-cache": "^11.0.0",
@@ -18,9 +19,13 @@
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
-    "rimraf": "^6.0.1"
+    "react-email": "^2.1.5",
+    "resend": "^3.4.0",
+    "rimraf": "^6.0.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
