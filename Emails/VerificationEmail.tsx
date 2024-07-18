@@ -13,6 +13,7 @@ interface VerificationEmailProps {
   username: string;
   otp: string;
 }
+
 export default function VerificationEmail({
   username,
   otp,
@@ -20,12 +21,12 @@ export default function VerificationEmail({
   return (
     <Html lang="en" dir="ltr">
       <Head>
-        <title> Verification Code </title>
+        <title>Verification Code</title>
         <Font
           fontFamily="Roboto"
           fallbackFontFamily="Verdana"
           webFont={{
-            url: "https://fonts.gstatic.com/s/roboto/v27/KF0mCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
+            url: "https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
             format: "woff2",
           }}
           fontWeight={400}
@@ -35,12 +36,12 @@ export default function VerificationEmail({
       <Preview>Here&apos;s Your Verification Code: {otp}</Preview>
       <Section>
         <Row>
-          <Heading as="h2">Hellow {username},</Heading>
+          <Heading as="h2">Hello {username},</Heading>
         </Row>
         <Row>
           <Text>
-            Thank You For Registrating, Please Use The Following Verification
-            Code To Complete Your Registration;
+            Thank You For Registration. Please Use The Following Verification
+            Code To Complete Your Registration:
           </Text>
         </Row>
         <Row>

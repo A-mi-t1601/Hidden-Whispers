@@ -1,6 +1,6 @@
-import { resend } from "@/Lib/Resend";
-import VerificationEmail from "../../Emails/VerificationEmail";
-import { ApiResponse } from "@/Types/ApiResponse";
+import { resend } from "@/lib/resend";
+import VerificationEmail from "../../emails/VerificationEmail";
+import { ApiResponse } from "@/types/ApiResponse";
 
 export async function sendVerificationEmail(
   email: string,
@@ -10,13 +10,13 @@ export async function sendVerificationEmail(
   try {
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "email",
-      subject: "Hidden-Whispers | Verification Code",
+      to: email,
+      subject: "Hidden Whispers Verification Code",
       react: VerificationEmail({ username, otp: verifyCode }),
     });
-    return { success: true, message: "Verification Email Send Successfully" };
+    return { success: true, message: "Verification Email Sent Successfully." };
   } catch (emailError) {
-    console.log("Error Sending Verification Email", emailError);
-    return { success: false, message: "Failed To Send Verification Email" };
+    console.error("Error Sending Verification Email:", emailError);
+    return { success: false, message: "Failed To Send Verification Email." };
   }
 }

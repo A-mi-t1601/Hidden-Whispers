@@ -5,7 +5,7 @@ export interface Message extends Document {
   createdAt: Date;
 }
 
-const MessageSchema: Schema<Message> = new Schema({
+const MessageSchema: Schema<Message> = new mongoose.Schema({
   content: {
     type: String,
     required: true,
@@ -24,40 +24,41 @@ export interface User extends Document {
   verifyCode: string;
   verifyCodeExpiry: Date;
   isVerified: boolean;
-  isAcceptingMessage: boolean;
+  isAcceptingMessages: boolean;
   messages: Message[];
 }
 
-const UserSchema: Schema<User> = new Schema({
+//Updated User Schema
+const UserSchema: Schema<User> = new mongoose.Schema({
   username: {
     type: String,
-    required: [true, "Username is Required"],
+    required: [true, "Username Is Required"],
     trim: true,
     unique: true,
   },
   email: {
     type: String,
-    required: [true, "Email is Required"],
+    required: [true, "Email Is Required"],
     unique: true,
-    match: [/.+\@.+\..+/, "Please Provide A Valid Email Address"],
+    match: [/.+\@.+\..+/, "Please Use A Valid Email Address"],
   },
   password: {
     type: String,
-    required: [true, "Password is Required"],
+    required: [true, "Password Is Required"],
   },
   verifyCode: {
     type: String,
-    required: [true, "Verify Code is Required"],
+    required: [true, "Verify Code Is Required"],
   },
   verifyCodeExpiry: {
     type: Date,
-    required: [true, "Verify Code Expiry is Required"],
+    required: [true, "Verify Code Expiry Is Required"],
   },
   isVerified: {
     type: Boolean,
     default: false,
   },
-  isAcceptingMessage: {
+  isAcceptingMessages: {
     type: Boolean,
     default: true,
   },
