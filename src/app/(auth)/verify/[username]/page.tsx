@@ -11,7 +11,6 @@ import axios, { AxiosError } from "axios";
 import { ApiResponse } from "@/types/ApiResponse";
 import {
   Form,
-  FormControl,
   FormField,
   FormItem,
   FormLabel,
@@ -20,7 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-const VerifyAccount = () => {
+export default function VerifyAccount() {
   const router = useRouter();
   const params = useParams<{ username: string }>();
   const { toast } = useToast();
@@ -30,7 +29,7 @@ const VerifyAccount = () => {
 
   const onSubmit = async (data: z.infer<typeof verifySchema>) => {
     try {
-      const response = await axios.post(`/api/verify-code`, {
+      const response = await axios.post<ApiResponse>(`/api/verify-code`, {
         username: params.username,
         code: data.code,
       });
@@ -38,13 +37,14 @@ const VerifyAccount = () => {
         title: "Success",
         description: response.data.message,
       });
-      router.replace("sign-in");
+      router.replace("/sign-in");
     } catch (error) {
-      console.error("Error In Signup Of User", error);
       const axiosError = error as AxiosError<ApiResponse>;
       toast({
-        title: "Signup Failed",
-        description: axiosError.response?.data.message,
+        title: "Verification Failed",
+        description:
+          axiosError.response?.data.message ??
+          "An Error Occurred. Please Try Again.",
         variant: "destructive",
       });
     }
@@ -56,7 +56,7 @@ const VerifyAccount = () => {
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
             Verify Your Account
           </h1>
-          <p className="mb-4">Enter Verification Code</p>
+          <p className="mb-4">Enter The Verification Code Sent To Your Email</p>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -66,19 +66,15 @@ const VerifyAccount = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Verification Code</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Code" {...field} />
-                  </FormControl>
+                  <Input {...field} />
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Verify</Button>
           </form>
         </Form>
       </div>
     </div>
   );
-};
-
-export default VerifyAccount;
+}

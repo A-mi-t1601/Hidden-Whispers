@@ -11,41 +11,34 @@ export async function DELETE(
   const messageId = params.messageid;
   await dbConnect();
   const session = await getServerSession(authOptions);
-  const user: User = session?.user as User;
-  if (!session || !session.user) {
+  const _user: User = session?.user;
+  if (!session || !_user) {
     return Response.json(
       { success: false, message: "Not Authenticated" },
       { status: 401 }
     );
   }
+
   try {
     const updateResult = await UserModel.updateOne(
-      { _id: user._id },
+      { _id: _user._id },
       { $pull: { messages: { _id: messageId } } }
     );
-    if (updateResult.modifiedCount == 0) {
+    if (updateResult.modifiedCount === 0) {
       return Response.json(
-        {
-          success: false,
-          message: "Message Not Found or Already Deleted",
-        },
+        { message: "Message Not Found or Already Deleted", success: false },
         { status: 404 }
       );
     }
+
     return Response.json(
-      {
-        success: true,
-        message: "Message Deleted",
-      },
+      { message: "Message Deleted", success: true },
       { status: 200 }
     );
   } catch (error) {
-    console.log("Error In Delete Message Route", error);
+    console.error("Error Deleting Message:", error);
     return Response.json(
-      {
-        success: false,
-        message: "Error Deleting Message",
-      },
+      { message: "Error Deleting Message", success: false },
       { status: 500 }
     );
   }

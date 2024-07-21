@@ -43,16 +43,18 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token._id = user._id?.toString(); //Convert Object ID Into String
+        token._id = user._id?.toString(); //Convert ObjectId To String
         token.isVerified = user.isVerified;
         token.isAcceptingMessages = user.isAcceptingMessages;
         token.username = user.username;
       }
       return token;
     },
+
     async session({ session, token }) {
       if (token) {
         session.user._id = token._id;
@@ -63,6 +65,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
+
   session: {
     strategy: "jwt",
   },

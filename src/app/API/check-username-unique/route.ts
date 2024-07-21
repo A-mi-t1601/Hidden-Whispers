@@ -6,6 +6,7 @@ import { usernameValidation } from "@/schemas/signUpSchema";
 const UsernameQuerySchema = z.object({
   username: usernameValidation,
 });
+
 export async function GET(request: Request) {
   await dbConnect();
   try {
@@ -13,7 +14,6 @@ export async function GET(request: Request) {
     const queryParams = {
       username: searchParams.get("username"),
     };
-
     const result = UsernameQuerySchema.safeParse(queryParams);
     if (!result.success) {
       const usernameErrors = result.error.format().username?._errors || [];
@@ -43,7 +43,6 @@ export async function GET(request: Request) {
         { status: 200 }
       );
     }
-
     return Response.json(
       {
         success: true,

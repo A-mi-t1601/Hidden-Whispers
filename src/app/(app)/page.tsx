@@ -1,60 +1,62 @@
 "use client";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Mail } from "lucide-react"; //Assuming I've An Icon For Messages
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import messages from "@/messages.json";
 
-const Home = () => {
+export default function Home() {
   return (
     <>
-      <main className="flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 bg-slate-200">
+      {/* Main Content  */}
+      <main className="flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 bg-gray-800 text-white">
         <section className="text-center mb-8 md:mb-12">
-          <h6 className="text-2xl md:text-2xl font-bold text-red-500">
-            "Unveil the secrets of the universe with Hidden Whispers , your
+          <h6 className="text-3xl md:text-3xl font-bold">
+            "Unveil the secrets of the universe with Hidden Whispers, your
             portal to enigmatic stories and mysteries untold."
           </h6>
-          <p className="mt-3 md:mt-4 text-base md:text-lg text-blue-500">
-            Explore Hidden Whispers-; "Where You Identity Remains A Secret.""
+          <p className="mt-3 md:mt-4 text-base md:text-lg">
+            Explore Hidden Whispers-; "Where You Identity Remains A Secret.
           </p>
         </section>
+
+        {/* Carousel For Messages */}
         <Carousel
           plugins={[Autoplay({ delay: 2000 })]}
-          className="w-full max-w-xs"
+          className="w-full max-w-lg md:max-w-xl"
         >
           <CarouselContent>
             {messages.map((message, index) => (
-              <CarouselItem key={index}>
-                <div className="p-1">
-                  <Card>
-                    <CardHeader className="text-black-500 font-bold bg-red-200">
-                      {message.title}
-                    </CardHeader>
-                    <CardContent className="flex aspect-square items-center justify-center p-6 bg-gray-300">
-                      <span className="text-lg font-italic text-violet-700">
-                        {message.content}
-                      </span>
-                    </CardContent>
-                  </Card>
-                </div>
+              <CarouselItem key={index} className="p-4">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{message.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-4">
+                    <Mail className="flex-shrink-0" />
+                    <div>
+                      <p>{message.content}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {message.received}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
         </Carousel>
       </main>
-      <footer className="text-center p-4 md:p-6">
-        © 2024 Hidden Whispers. All Right Reserved.
+
+      {/* Footer */}
+      <footer className="text-center p-4 md:p-6 bg-gray-900 text-white">
+        © 2023 Hidden Whispers. All rights reserved.
       </footer>
     </>
   );
-};
-
-export default Home;
+}

@@ -19,7 +19,7 @@ export async function POST(request: Request) {
   const userId = user._id;
   const { acceptMessages } = await request.json();
   try {
-    //Update The User's Message Acceptance
+    //Update The User's Message Acceptance Status
     const updatedUser = await UserModel.findByIdAndUpdate(
       userId,
       { isAcceptingMessages: acceptMessages },
@@ -57,9 +57,11 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   //Connect To The Database
   await dbConnect();
+
   //Get The User Session
   const session = await getServerSession(authOptions);
   const user = session?.user;
+
   //Check If The User Is Authenticated
   if (!session || !user) {
     return Response.json(
