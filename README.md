@@ -49,7 +49,7 @@ Hidden Whispers is designed as an anonymous feedback platform with various featu
 ### Message Management
 
 - **View Messages**: Users can view messages received in their inbox.
-- **Delete Messages**: Users can archive or delete messages to manage their inbox.
+- **Delete Messages**: Users can delete messages to manage their inbox.
 
 ### Customizable Settings
 
