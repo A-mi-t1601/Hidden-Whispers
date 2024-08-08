@@ -36,7 +36,7 @@
     "inflight": "^1.0.6",
     "lru-cache": "^11.0.0",
     "lucide-react": "^0.411.0",
-    "mongoose": "^8.5.1",
+    "mongoose": "^8.5.2",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
     "openai": "^4.52.7",

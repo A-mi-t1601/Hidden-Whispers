@@ -1,8 +1,8 @@
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]/options";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import { User } from "next-auth";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "../auth/[...nextauth]/options";
 
 export async function POST(request: Request) {
   //Connect To The Database
@@ -91,6 +91,7 @@ export async function GET(request: Request) {
     );
   } catch (error) {
     console.error("Error Retrieving Message Acceptance Status:", error);
+
     return Response.json(
       { success: false, message: "Error Retrieving Message Acceptance Status" },
       { status: 500 }

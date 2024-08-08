@@ -1,8 +1,8 @@
-import { NextAuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
+import bcrypt from "bcryptjs";
+import { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -28,6 +28,7 @@ export const authOptions: NextAuthOptions = {
           if (!user.isVerified) {
             throw new Error("Please Verify Your Account Before Logging In");
           }
+
           const isPasswordCorrect = await bcrypt.compare(
             credentials.password,
             user.password

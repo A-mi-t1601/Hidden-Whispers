@@ -1,14 +1,6 @@
 "use client";
 
-import React from "react";
-import { useParams, useRouter } from "next/navigation";
-import { useToast } from "@/components/ui/use-toast";
-import { useForm } from "react-hook-form";
-import { verifySchema } from "@/schemas/verifySchema";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import axios, { AxiosError } from "axios";
-import { ApiResponse } from "@/types/ApiResponse";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormField,
@@ -17,7 +9,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import { verifySchema } from "@/schemas/verifySchema";
+import { ApiResponse } from "@/types/ApiResponse";
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios, { AxiosError } from "axios";
+import { useParams, useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 export default function VerifyAccount() {
   const router = useRouter();
@@ -49,6 +48,7 @@ export default function VerifyAccount() {
       });
     }
   };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">

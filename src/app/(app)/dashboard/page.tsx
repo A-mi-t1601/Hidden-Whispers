@@ -1,26 +1,25 @@
 "use client";
 
+import { MessageCard } from "@/components/MessageCard";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/components/ui/use-toast";
 import { Message } from "@/model/User";
 import { AcceptMessageSchema } from "@/schemas/acceptMessageSchema";
 import { ApiResponse } from "@/types/ApiResponse";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";
+import { Loader2, RefreshCcw } from "lucide-react";
+import { User } from "next-auth";
 import { useSession } from "next-auth/react";
 import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import { Separator } from "@/components/ui/separator";
-import { Loader2, RefreshCcw } from "lucide-react";
-import { MessageCard } from "@/components/MessageCard";
-import { User } from "next-auth";
 
 function UserDashboard() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSwitchLoading, setIsSwitchLoading] = useState(false);
-
   const { toast } = useToast();
   const handleDeleteMessage = (messageId: string) => {
     setMessages(messages.filter((message) => message._id !== messageId));
@@ -29,9 +28,9 @@ function UserDashboard() {
   const form = useForm({
     resolver: zodResolver(AcceptMessageSchema),
   });
-
   const { register, watch, setValue } = form;
   const acceptMessages = watch("acceptMessages");
+
   const fetchAcceptMessages = useCallback(async () => {
     setIsSwitchLoading(true);
     try {
@@ -43,7 +42,7 @@ function UserDashboard() {
         title: "Error",
         description:
           axiosError.response?.data.message ??
-          "Failed To Fetch Message Settings",
+          "Failed To Fetch Message Setting",
         variant: "destructive",
       });
     } finally {
@@ -56,7 +55,7 @@ function UserDashboard() {
       setIsLoading(true);
       setIsSwitchLoading(false);
       try {
-        const response = await axios.get<ApiResponse>("/api/get-messages");
+        const response = await axios<ApiResponse>("/api/get-messages");
         setMessages(response.data.messages || []);
         if (refresh) {
           toast({
@@ -104,7 +103,7 @@ function UserDashboard() {
         title: "Error",
         description:
           axiosError.response?.data.message ??
-          "Failed To Update Message Settings",
+          "Failed To Update Message Setting",
         variant: "destructive",
       });
     }

@@ -1,14 +1,14 @@
 "use client";
 
-import { Mail } from "lucide-react"; //Assuming I've An Icon For Messages
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 import messages from "@/messages.json";
+import Autoplay from "embla-carousel-autoplay";
+import { Mail } from "lucide-react"; //Assuming I've An Icon For Messages
 
 export default function Home() {
   return (
@@ -55,7 +55,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="text-center p-4 md:p-6 bg-gray-900 text-white">
-        © 2023 Hidden Whispers. All rights reserved.
+        © 2024 Hidden Whispers. All rights reserved.
       </footer>
     </>
   );

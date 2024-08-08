@@ -15,6 +15,7 @@ export async function GET(request: Request) {
       { status: 401 }
     );
   }
+
   const userId = new mongoose.Types.ObjectId(_user._id);
   try {
     const user = await UserModel.aggregate([
@@ -24,10 +25,17 @@ export async function GET(request: Request) {
       { $group: { _id: "$_id", messages: { $push: "$messages" } } },
     ]).exec();
 
-    if (!user || user.length === 0) {
+    if (!user) {
       return Response.json(
         { message: "User Not Found", success: false },
         { status: 404 }
+      );
+    }
+
+    if (user.length === 0) {
+      return Response.json(
+        { message: "No Message Found", success: true },
+        { status: 200 }
       );
     }
     return Response.json(
@@ -38,6 +46,7 @@ export async function GET(request: Request) {
     );
   } catch (error) {
     console.error("An Unexpected Error Occurred:", error);
+
     return Response.json(
       { message: "Internal Server Error", success: false },
       { status: 500 }

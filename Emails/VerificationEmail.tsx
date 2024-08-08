@@ -1,9 +1,9 @@
 import {
-  Html,
-  Head,
   Font,
-  Preview,
+  Head,
   Heading,
+  Html,
+  Preview,
   Row,
   Section,
   Text,
@@ -33,7 +33,9 @@ export default function VerificationEmail({
           fontStyle="normal"
         />
       </Head>
+
       <Preview>Here&apos;s Your Verification Code: {otp}</Preview>
+
       <Section>
         <Row>
           <Heading as="h2">Hello {username},</Heading>
