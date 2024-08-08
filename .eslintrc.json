@@ -1,3 +1,4 @@
+//Java Script Expression Support
 {
   "extends": "next/core-web-vitals"
 }
