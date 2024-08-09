@@ -75,8 +75,8 @@ export default function SignUpForm() {
       setIsSubmitting(false);
     } catch (error) {
       console.error("Error During Sign-Up:", error);
-      const axiosError = error as AxiosError<ApiResponse>;
 
+      const axiosError = error as AxiosError<ApiResponse>;
       //Default Error Message
       let errorMessage = axiosError.response?.data.message;
       ("There Was A Problem With Your Sign-Up. Please Try Again.");
@@ -98,6 +98,7 @@ export default function SignUpForm() {
           </h1>
           <p className="mb-4">Sign Up To Start Your Anonymous Adventure</p>
         </div>
+
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -167,6 +168,7 @@ export default function SignUpForm() {
             </Button>
           </form>
         </Form>
+
         <div className="text-center mt-4">
           <p>
             Already A Member?{" "}

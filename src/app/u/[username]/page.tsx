@@ -29,7 +29,6 @@ const specialChar = "||";
 const parseStringMessages = (messageString: string): string[] => {
   return messageString.split(specialChar);
 };
-
 const initialMessageString =
   "What's your favorite movie?||Do you have any pets?||What's your dream job?";
 
@@ -115,6 +114,7 @@ export default function SendMessage() {
               </FormItem>
             )}
           />
+
           <div className="flex justify-center">
             {isLoading ? (
               <Button disabled>
@@ -141,6 +141,7 @@ export default function SendMessage() {
           </Button>
           <p>Click on any message below to select it.</p>
         </div>
+
         <Card>
           <CardHeader>
             <h3 className="text-xl font-semibold">Messages</h3>
@@ -163,6 +164,7 @@ export default function SendMessage() {
           </CardContent>
         </Card>
       </div>
+
       <Separator className="my-6" />
       <div className="text-center">
         <div className="mb-4">Get Your Message Board</div>

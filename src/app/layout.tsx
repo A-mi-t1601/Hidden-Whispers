@@ -5,7 +5,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "Hidden Whispers",
   description: "Real Feedback From Real People.",

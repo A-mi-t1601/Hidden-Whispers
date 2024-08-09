@@ -10,6 +10,7 @@ export async function DELETE(
 ) {
   const messageId = params.messageid;
   await dbConnect();
+
   const session = await getServerSession(authOptions);
   const _user: User = session?.user;
   if (!session || !_user) {
@@ -37,6 +38,7 @@ export async function DELETE(
     );
   } catch (error) {
     console.error("Error Deleting Message:", error);
+
     return Response.json(
       { message: "Error Deleting Message", success: false },
       { status: 500 }

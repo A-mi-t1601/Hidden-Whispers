@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
     return new StreamingTextResponse(result.toAIStream());
   } catch (error) {
-    console.error("An Unexpected Error Occurred:", error);
+    console.error("An Unexpected Error Occurred:-", error);
     throw error;
   }
 }

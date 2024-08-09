@@ -34,7 +34,7 @@ export default function VerificationEmail({
         />
       </Head>
 
-      <Preview>Here&apos;s Your Verification Code: {otp}</Preview>
+      <Preview>Here&apos;s Your Verification Code:- {otp}</Preview>
 
       <Section>
         <Row>

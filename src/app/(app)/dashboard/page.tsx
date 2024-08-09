@@ -172,13 +172,13 @@ function UserDashboard() {
         {messages.length > 0 ? (
           messages.map((message, index) => (
             <MessageCard
-              key={message._id as React.Key} //Type Assertion
+              key={message._id as React.Key}
               message={message}
               onMessageDelete={handleDeleteMessage}
             />
           ))
         ) : (
-          <p>No Messages To Display.</p>
+          <p>No Message To Display.</p>
         )}
       </div>
     </div>

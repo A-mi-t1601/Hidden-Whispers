@@ -71,7 +71,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    //Retrieve The User From The Database Using The ID
+    //Retrieve The User From The Database Using ID
     const foundUser = await UserModel.findById(user._id);
     if (!foundUser) {
       //User Not Found

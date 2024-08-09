@@ -73,6 +73,7 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+
     return Response.json(
       {
         success: true,
@@ -82,6 +83,7 @@ export async function POST(request: Request) {
     );
   } catch (error) {
     console.error("Error Registering User:", error);
+
     return Response.json(
       {
         success: false,

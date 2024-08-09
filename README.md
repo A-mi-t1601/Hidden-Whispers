@@ -14,8 +14,6 @@ Welcome to the Hidden-Whispers GitHub Documentation! This repository contains th
 
 Hidden Whispers is a platform designed to facilitate candid and anonymous feedback within organizations. It empowers employees, customers, and stakeholders to provide honest and constructive feedback without fear of retaliation or bias, enabling a healthier and more open communication culture.
 
-Certainly! Here's the updated Tech Stack with the additional components:-
-
 ## Tech Stack
 
 Hidden Whispers's Tech Stack comprises the following components:-

@@ -38,6 +38,7 @@ export async function GET(request: Request) {
         { status: 200 }
       );
     }
+
     return Response.json(
       { messages: user[0].messages },
       {

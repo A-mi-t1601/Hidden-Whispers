@@ -58,6 +58,7 @@ export default function VerifyAccount() {
           </h1>
           <p className="mb-4">Enter The Verification Code Sent To Your Email</p>
         </div>
+
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField

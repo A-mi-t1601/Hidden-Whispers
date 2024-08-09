@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import messages from "@/messages.json";
 import Autoplay from "embla-carousel-autoplay";
-import { Mail } from "lucide-react"; //Assuming I've An Icon For Messages
+import { Mail } from "lucide-react";
 
 export default function Home() {
   return (

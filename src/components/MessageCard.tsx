@@ -27,6 +27,7 @@ type MessageCardProps = {
 
 export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
   const { toast } = useToast();
+
   const handleDeleteConfirm = async () => {
     try {
       const response = await axios.delete<ApiResponse>(
@@ -58,6 +59,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
                 <X className="w-5 h-5" />
               </Button>
             </AlertDialogTrigger>
+
             <AlertDialogContent>
               <AlertDialogHeader>
                 <AlertDialogTitle>Are you sure?</AlertDialogTitle>
@@ -66,6 +68,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
                   this message.
                 </AlertDialogDescription>
               </AlertDialogHeader>
+
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
                 <AlertDialogAction onClick={handleDeleteConfirm}>
@@ -75,6 +78,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
             </AlertDialogContent>
           </AlertDialog>
         </div>
+
         <div className="text-sm">
           {dayjs(message.createdAt).format("MMM D, YYYY h:mm A")}
         </div>

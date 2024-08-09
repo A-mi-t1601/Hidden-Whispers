@@ -14,9 +14,11 @@ export async function sendVerificationEmail(
       subject: "Hidden Whispers Verification Code",
       react: VerificationEmail({ username, otp: verifyCode }),
     });
+
     return { success: true, message: "Verification Email Sent Successfully." };
   } catch (emailError) {
     console.error("Error Sending Verification Email:", emailError);
+
     return { success: false, message: "Failed To Send Verification Email." };
   }
 }

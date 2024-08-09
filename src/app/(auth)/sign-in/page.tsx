@@ -62,8 +62,9 @@ export default function SignInForm() {
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
             Welcome Back to Hidden Whispers
           </h1>
-          <p className="mb-4">Sign In To Continue Your Secret Conversations</p>
+          <p className="mb-4">Sign In To Continue Your Secret Conversation</p>
         </div>
+
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -93,6 +94,7 @@ export default function SignInForm() {
             </Button>
           </form>
         </Form>
+
         <div className="text-center mt-4">
           <p>
             Not A Member Yet?{" "}
